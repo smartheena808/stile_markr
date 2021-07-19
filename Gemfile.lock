@@ -1,0 +1,34 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    json (2.5.1)
+    mustermann (1.1.1)
+      ruby2_keywords (~> 0.0.1)
+    nokogiri (1.11.7-x64-mingw32)
+      racc (~> 1.4)
+    racc (1.5.2)
+    rack (2.2.3)
+    rack-protection (2.1.0)
+      rack
+    ruby2_keywords (0.0.5)
+    ruby_native_statistics (0.10.1)
+    sinatra (2.1.0)
+      mustermann (~> 1.0)
+      rack (~> 2.2)
+      rack-protection (= 2.1.0)
+      tilt (~> 2.0)
+    sqlite3 (1.4.2)
+    tilt (2.0.10)
+
+PLATFORMS
+  x64-mingw32
+
+DEPENDENCIES
+  json
+  nokogiri
+  ruby_native_statistics
+  sinatra (= 2.1.0)
+  sqlite3 (= 1.4.2)
+
+BUNDLED WITH
+   2.2.15

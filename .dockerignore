@@ -1,0 +1,13 @@
+**/.vs
+
+**/.vscode
+
+**/.dockerignore
+
+**/.gitignore
+
+**/docker-compose*
+
+**/Dockerfile*
+
+README.md

@@ -6,7 +6,7 @@ WORKDIR /markr.com
 
 COPY Gemfile /markr.com/Gemfile
 
-COPY GEmfile.lock /markr.com/Gemfile.lock
+COPY Gemfile.lock /markr.com/Gemfile.lock
 
 RUN bundle install
 

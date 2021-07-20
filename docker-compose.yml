@@ -1,18 +1,23 @@
-app:
-    container_name: app
-    restart: always
-    build: .
-    ports:
-        - "4567:4567"
-    links: 
-        - sqlite3
-sqlite3:
-    container_name: sqlite3
-    image: nouchka/sqlite3:latest
-    stdin_open: true
-    tty: true
-    volumes: 
-        - ./sqlite3:/root/db        
-    ports:
-        - '9000:9000'
-    restart: unless-stopped
+version: "3.9"
+services:
+    sqlite3:
+        container_name: sqlite3
+        image: nouchka/sqlite3:latest
+        stdin_open: true
+        tty: true
+        volumes: 
+            - ./sqlite3:/root/db        
+        ports:
+            - '9000:9000'
+        restart: unless-stopped
+    app:
+        container_name: app
+        restart: always
+        build: .
+        volumes:
+            - .:/markr
+        ports:
+            - "4567:4567"
+        depends_on:  
+            - sqlite3
+    

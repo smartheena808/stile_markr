@@ -1,16 +1,16 @@
 FROM ruby:3.0.1
 
-RUN mkdir /markr.com
+RUN mkdir /markr
 
-WORKDIR /markr.com
+WORKDIR /markr
 
-COPY Gemfile /markr.com/Gemfile
+COPY Gemfile /markr/Gemfile
 
-COPY Gemfile.lock /markr.com/Gemfile.lock
+COPY Gemfile.lock /markr/Gemfile.lock
 
 RUN bundle install
 
-COPY . /markr.com
+COPY . /markr
 
 EXPOSE 4567
 

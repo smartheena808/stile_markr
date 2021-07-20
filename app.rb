@@ -38,7 +38,7 @@ class MarkrApp < Sinatra::Base
                 @questions_available = result.at_xpath('summary-marks').get_attribute "available"
                 @questions_obtained = result.at_xpath('summary-marks').get_attribute "obtained"
                
-                if @first_name.empty? or @last_name.empty? or @student_id.empty? or @test_id.empty? or @questions_available.empty? or @questions_obtained.empty?
+                if @first_name.empty? or @student_id.empty? or @test_id.empty? or @questions_available.empty? or @questions_obtained.empty?
                     # redirect to /invalid page and reject the file
                     content_type :markr_mime_type
                     puts @data
@@ -66,6 +66,7 @@ class MarkrApp < Sinatra::Base
         content_type 'application/json'
 
         scores = markr_db.get_test_results(test_id)
+        
         if scores.size == 1
             stddev = 0.0
         else

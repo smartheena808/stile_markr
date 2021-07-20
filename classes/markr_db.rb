@@ -21,6 +21,7 @@ class MarkrDB
         @db.close if @db  
     end
 
+    # Insert test result 
     def insert_result(student_id, first_name, last_name, test_id, questions_available, questions_obtained)
         @db = SQLite3::Database.open ("markr.db")
 
@@ -51,16 +52,21 @@ class MarkrDB
         @db.close if @db
     end
 
+    # Return an array of test result for specific test id
     def get_test_results(test_id)
-        @data = []
+        @data = Array.new
         @db = SQLite3::Database.open ("markr.db")
         
-        query = @db.prepare "SELECT score FROM TestResults WHERE test_id = ?"
-        rs = query.execute(test_id)
+        rs = @db.execute "SELECT score FROM TestResults WHERE test_id = ?",[test_id]
+        
+        if rs.length == 0
+            @data.push(0)
+        else
+            rs.each do |row|
+                @data.push row[0]
+            end
+        end
 
-        rs.each do |row|
-            @data.push row[0]
-        end    
         return @data
 
     rescue SQLite3::Exception => err 
